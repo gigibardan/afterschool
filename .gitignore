@@ -1,0 +1,28 @@
+# Fișiere de configurare cu date sensibile
+backend/config.php
+
+# Loguri și fișiere temporare
+*.log
+*.tmp
+temp/
+logs/
+
+# Backup-uri și fișiere de sistem
+*.backup
+*.bak
+.DS_Store
+Thumbs.db
+
+# IDE și editoare
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Fișiere cu date sensibile (dacă folosim stocarea în fișiere)
+data/
+uploads/
+
+# Cache
+cache/
+*.cache
