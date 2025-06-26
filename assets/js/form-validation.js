@@ -476,7 +476,7 @@ class FormValidator {
         
         try {
             // Submit to server
-            const response = await fetch('backend/submit.php', {
+            const response = await fetch('backend/simple-submit.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
