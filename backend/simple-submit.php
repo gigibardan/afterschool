@@ -29,7 +29,7 @@ try {
         $errors['nume_copil'] = 'Numele copilului este obligatoriu';
     }
     
-    if (empty($data['acord_gdpr']) || $data['acord_gdpr'] !== '1') {
+if (empty($data['acord_gdpr']) || ($data['acord_gdpr'] !== '1' && $data['acord_gdpr'] !== 'on')) {
         $errors['acord_gdpr'] = 'Acordul GDPR este obligatoriu';
     }
     
