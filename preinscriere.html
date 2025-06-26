@@ -485,5 +485,34 @@
     <!-- Scripts -->
     <script src="assets/js/form-validation.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+// Debug script pentru testare
+console.log('🔍 Debug mode active');
+console.log('📍 Current URL:', window.location.href);
+console.log('🌐 Hostname:', window.location.hostname);
+
+// Test backend availability
+fetch('backend/submit.php', {
+    method: 'HEAD'
+}).then(response => {
+    console.log('✅ Backend available:', response.status);
+}).catch(error => {
+    console.log('❌ Backend not available:', error);
+});
+
+// Override form submission to see what happens
+window.addEventListener('load', () => {
+    const form = document.getElementById('preregistrationForm');
+    if (form) {
+        console.log('📝 Form found, adding debug listener');
+        
+        // Listen for form submission
+        form.addEventListener('submit', (e) => {
+            console.log('🚀 Form submit intercepted');
+            console.log('📋 Form data:', new FormData(form));
+        });
+    }
+});
+</script>
 </body>
 </html>
