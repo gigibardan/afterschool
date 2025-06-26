@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - TechMinds Academy Afterschool</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="admin.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-body">
+    <!-- Background Animation -->
+    <div class="login-background">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+        <div class="floating-elements">
+            <div class="floating-element" style="--delay: 0s; --duration: 8s;">💻</div>
+            <div class="floating-element" style="--delay: 2s; --duration: 10s;">🤖</div>
+            <div class="floating-element" style="--delay: 4s; --duration: 12s;">🎮</div>
+            <div class="floating-element" style="--delay: 6s; --duration: 9s;">⚡</div>
+            <div class="floating-element" style="--delay: 1s; --duration: 11s;">🚀</div>
+        </div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <!-- Login Card -->
+        <div class="login-card">
+            <!-- Header -->
+            <div class="login-header">
+                <div class="logo-container">
+                    <img src="../assets/images/logo-techminds-sigla.png" alt="TechMinds Academy" class="login-logo">
+                </div>
+                <h1 class="login-title">
+                    Admin <span class="highlight">Dashboard</span>
+                </h1>
+                <p class="login-subtitle">
+                    Acces panel administrare Afterschool
+                </p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="login-form">
+                <!-- Messages -->
+                <div id="login-messages" class="form-messages hidden"></div>
+
+                <!-- Username Field -->
+                <div class="form-group">
+                    <label for="username" class="form-label">
+                        <i class="fas fa-user"></i>
+                        Nume utilizator
+                    </label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        class="form-input" 
+                        required
+                        autocomplete="username"
+                        placeholder="Introduceți numele de utilizator"
+                    >
+                    <div class="input-focus-effect"></div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        <i class="fas fa-lock"></i>
+                        Parolă
+                    </label>
+                    <div class="password-input-container">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input" 
+                            required
+                            autocomplete="current-password"
+                            placeholder="Introduceți parola"
+                        >
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Arată/Ascunde parolă">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="input-focus-effect"></div>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="remember_me" id="remember_me">
+                        <span class="checkbox-custom"></span>
+                        <span class="checkbox-text">Ține-mă minte</span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="login-btn" id="loginBtn">
+                    <span class="btn-text">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Autentificare
+                    </span>
+                    <div class="btn-loader hidden">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Autentificare...
+                    </div>
+                </button>
+
+                <!-- Additional Links -->
+                <div class="login-links">
+                    <a href="#" class="forgot-password" id="forgotPassword">
+                        <i class="fas fa-question-circle"></i>
+                        Ați uitat parola?
+                    </a>
+                </div>
+            </form>
+
+            <!-- Security Info -->
+            <div class="security-info">
+                <div class="security-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Conexiune securizată SSL</span>
+                </div>
+                <div class="security-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Sesiunea expiră în 2 ore</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="info-panel">
+            <div class="info-content">
+                <h3>
+                    <i class="fas fa-chart-line"></i>
+                    Panou Administrare
+                </h3>
+                <p>Accesați dashboard-ul pentru a gestiona:</p>
+                <ul class="info-features">
+                    <li>
+                        <i class="fas fa-users"></i>
+                        <span>Preînregistrări afterschool</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>Comunicare cu părinții</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Statistici și rapoarte</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-cog"></i>
+                        <span>Configurări sistem</span>
+                    </li>
+                </ul>
+
+                <div class="support-info">
+                    <h4>
+                        <i class="fas fa-headset"></i>
+                        Suport Tehnic
+                    </h4>
+                    <p>Pentru probleme de acces:</p>
+                    <div class="support-contact">
+                        <a href="mailto:admin@techminds-academy.ro">
+                            <i class="fas fa-envelope"></i>
+                            admin@techminds-academy.ro
+                        </a>
+                        <a href="tel:+40758707448">
+                            <i class="fas fa-phone"></i>
+                            +40 758 707 448
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-key"></i>
+                    Resetare Parolă
+                </h3>
+                <button type="button" class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Pentru resetarea parolei, vă rugăm să contactați administratorul sistemului:</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>admin@techminds-academy.ro</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+40 758 707 448</span>
+                    </div>
+                </div>
+                <div class="modal-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Includeți în cerere numele dvs. de utilizator și motivul resetării.</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="modalCloseBtn">
+                    Închide
+                </button>
+                <a href="mailto:admin@techminds-academy.ro?subject=Resetare%20Parolă%20Dashboard%20Afterschool" 
+                   class="btn btn-primary">
+                    <i class="fas fa-envelope"></i>
+                    Trimite Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Check Indicator -->
+    <div class="security-indicator">
+        <div class="security-status" id="securityStatus">
+            <i class="fas fa-shield-alt"></i>
+            <span>Verificare securitate...</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="login-footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <span>&copy; 2025 TechMinds Academy</span>
+                <a href="../index.html">Înapoi la site</a>
+            </div>
+            <div class="footer-right">
+                <a href="../politica-confidentialitate.html">Confidențialitate</a>
+                <a href="../termeni-conditii.html">Termeni</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="admin.js"></script>
+    
+    <script>
+        // Initialize login page
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginHandler = new AdminLogin();
+            
+            // Check if already logged in
+            if (localStorage.getItem('admin_token')) {
+                window.location.href = 'dashboard.html';
+            }
+            
+            // Security status animation
+            setTimeout(() => {
+                const securityStatus = document.getElementById('securityStatus');
+                if (securityStatus) {
+                    securityStatus.innerHTML = '<i class="fas fa-shield-alt text-success"></i><span>Conexiune securizată</span>';
+                    securityStatus.classList.add('secure');
+                }
+            }, 2000);
+            
+            console.log('Admin login page initialized');
+        });
+    </script>
+</body>
+</html>

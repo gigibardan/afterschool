@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preînregistrare Afterschool - TechMinds Academy</title>
+    <meta name="description" content="Preînregistrează-te pentru programul afterschool TechMinds Academy - învățare prin tehnologie pentru copii">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo-techminds-sigla.png" alt="TechMinds Academy Logo">
+                <span>TechMinds Academy</span>
+            </a>
+            <button class="menu-button">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="#program">Program</a></li>
+                <li><a href="#beneficii">Beneficii</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="preinscriere.html" class="btn-primary">Preînscrie-te</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="form-hero">
+            <div class="container">
+                <div class="hero-content fade-in-up">
+                    <h1 class="hero-title">
+                        Preînregistrare <span class="highlight">Afterschool</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Completează formularul pentru a-ți rezerva locul în cel mai inovator program afterschool din România
+                    </p>
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <span>Grupe mici (max 8 copii)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Tehnologie modernă</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Mediu sigur</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Proiecte spectaculoase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="form-section">
+            <div class="container">
+                <div class="form-container">
+                    <!-- Form Card -->
+                    <div class="form-card">
+                        <div class="form-header">
+                            <h2>Formular de Preînregistrare</h2>
+                            <p>Completează datele de mai jos și te vom contacta în cel mai scurt timp</p>
+                        </div>
+
+                        <!-- Success/Error Messages -->
+                        <div id="form-messages" class="form-messages hidden"></div>
+
+                        <!-- Form -->
+                        <form id="preregistrationForm" class="registration-form">
+                            <!-- CSRF Token -->
+                            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
+                            
+                            <!-- Date Părinte -->
+                            <div class="form-section-title">
+                                <i class="fas fa-user-circle"></i>
+                                <h3>Date Părinte / Tutore</h3>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nume_parinte" class="form-label">
+                                        Nume Părinte <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="nume_parinte" 
+                                        name="nume_parinte" 
+                                        class="form-input" 
+                                        required
+                                        placeholder="Introduceți numele"
+                                    >
+                                    <div class="form-error" id="error_nume_parinte"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="prenume_parinte" class="form-label">
+                                        Prenume Părinte <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="prenume_parinte" 
+                                        name="prenume_parinte" 
+                                        class="form-input" 
+                                        required
+                                        placeholder="Introduceți prenumele"
+                                    >
+                                    <div class="form-error" id="error_prenume_parinte"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="telefon_parinte" class="form-label">
+                                        Telefon <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="tel" 
+                                        id="telefon_parinte" 
+                                        name="telefon_parinte" 
+                                        class="form-input" 
+                                        required
+                                        placeholder="07XX XXX XXX"
+                                        pattern="[0-9\s\-\+\(\)]+"
+                                    >
+                                    <div class="form-error" id="error_telefon_parinte"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email_parinte" class="form-label">
+                                        Email <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="email" 
+                                        id="email_parinte" 
+                                        name="email_parinte" 
+                                        class="form-input" 
+                                        required
+                                        placeholder="exemplu@email.com"
+                                    >
+                                    <div class="form-error" id="error_email_parinte"></div>
+                                </div>
+                            </div>
+
+                            <!-- Date Copil -->
+                            <div class="form-section-title">
+                                <i class="fas fa-child"></i>
+                                <h3>Date Copil</h3>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nume_copil" class="form-label">
+                                        Nume Complet Copil <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="nume_copil" 
+                                        name="nume_copil" 
+                                        class="form-input" 
+                                        required
+                                        placeholder="Nume și prenume copil"
+                                    >
+                                    <div class="form-error" id="error_nume_copil"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="varsta_copil" class="form-label">
+                                        Vârsta Copil <span class="required">*</span>
+                                    </label>
+                                    <select id="varsta_copil" name="varsta_copil" class="form-select" required>
+                                        <option value="">Selectează vârsta</option>
+                                        <option value="6">6 ani</option>
+                                        <option value="7">7 ani</option>
+                                        <option value="8">8 ani</option>
+                                        <option value="9">9 ani</option>
+                                        <option value="10">10 ani</option>
+                                        <option value="11">11 ani</option>
+                                        <option value="12">12 ani</option>
+                                        <option value="13">13 ani</option>
+                                        <option value="14">14 ani</option>
+                                        <option value="15">15+ ani</option>
+                                    </select>
+                                    <div class="form-error" id="error_varsta_copil"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="clasa_copil" class="form-label">
+                                        Clasa <span class="required">*</span>
+                                    </label>
+                                    <select id="clasa_copil" name="clasa_copil" class="form-select" required>
+                                        <option value="">Selectează clasa</option>
+                                        <option value="Pregătitoare">Pregătitoare</option>
+                                        <option value="I">Clasa I</option>
+                                        <option value="II">Clasa a II-a</option>
+                                        <option value="III">Clasa a III-a</option>
+                                        <option value="IV">Clasa a IV-a</option>
+                                        <option value="V">Clasa a V-a</option>
+                                        <option value="VI">Clasa a VI-a</option>
+                                        <option value="VII">Clasa a VII-a</option>
+                                        <option value="VIII">Clasa a VIII-a</option>
+                                        <option value="IX">Clasa a IX-a</option>
+                                        <option value="X">Clasa a X-a</option>
+                                        <option value="XI">Clasa a XI-a</option>
+                                        <option value="XII">Clasa a XII-a</option>
+                                    </select>
+                                    <div class="form-error" id="error_clasa_copil"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="scoala_copil" class="form-label">
+                                        Școala <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="scoala_copil" 
+                                        name="scoala_copil" 
+                                        class="form-input" 
+                                        required
+                                        placeholder="Numele școlii"
+                                    >
+                                    <div class="form-error" id="error_scoala_copil"></div>
+                                </div>
+                            </div>
+
+                            <!-- Informații suplimentare -->
+                            <div class="form-section-title">
+                                <i class="fas fa-info-circle"></i>
+                                <h3>Informații Suplimentare (opțional)</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="experienta_copil" class="form-label">
+                                    Are copilul experiență cu programarea sau robotica?
+                                </label>
+                                <select id="experienta_copil" name="experienta_copil" class="form-select">
+                                    <option value="">Selectează nivelul</option>
+                                    <option value="Fără experiență">Fără experiență</option>
+                                    <option value="Începător">Începător (puțină experiență)</option>
+                                    <option value="Intermediar">Intermediar (experiență moderată)</option>
+                                    <option value="Avansat">Avansat (experiență semnificativă)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="interese_copil" class="form-label">
+                                    Ce îl interesează pe copil cel mai mult? (bifează toate care se aplică)
+                                </label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="interese_copil[]" value="Programare">
+                                        <span class="checkmark"></span>
+                                        Programare și dezvoltare aplicații
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="interese_copil[]" value="Robotica">
+                                        <span class="checkmark"></span>
+                                        Robotică și electronică
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="interese_copil[]" value="Jocuri">
+                                        <span class="checkmark"></span>
+                                        Dezvoltare jocuri
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="interese_copil[]" value="Web">
+                                        <span class="checkmark"></span>
+                                        Dezvoltare web
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="interese_copil[]" value="AI">
+                                        <span class="checkmark"></span>
+                                        Inteligență artificială
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="observatii" class="form-label">
+                                    Observații sau întrebări
+                                </label>
+                                <textarea 
+                                    id="observatii" 
+                                    name="observatii" 
+                                    class="form-textarea" 
+                                    placeholder="Orice informații suplimentare care ne-ar putea ajuta să oferim cea mai bună experiență copilului..."
+                                    rows="4"
+                                ></textarea>
+                            </div>
+
+                            <!-- Acorduri -->
+                            <div class="form-section-title">
+                                <i class="fas fa-check-circle"></i>
+                                <h3>Acorduri și Consimțăminte</h3>
+                            </div>
+
+                            <div class="agreement-section">
+                                <label class="checkbox-item agreement-item">
+                                    <input type="checkbox" name="acord_gdpr" id="acord_gdpr" required>
+                                    <span class="checkmark"></span>
+                                    <span class="agreement-text">
+                                        Sunt de acord cu prelucrarea datelor personale în conformitate cu 
+                                        <a href="politica-confidentialitate.html" target="_blank">Politica de Confidențialitate</a> 
+                                        și <a href="gdpr.html" target="_blank">GDPR</a> <span class="required">*</span>
+                                    </span>
+                                </label>
+
+                                <label class="checkbox-item agreement-item">
+                                    <input type="checkbox" name="acord_marketing" id="acord_marketing">
+                                    <span class="checkmark"></span>
+                                    <span class="agreement-text">
+                                        Sunt de acord să primesc informații despre cursuri și oferte speciale prin email și SMS
+                                    </span>
+                                </label>
+
+                                <label class="checkbox-item agreement-item">
+                                    <input type="checkbox" name="acord_foto" id="acord_foto">
+                                    <span class="checkmark"></span>
+                                    <span class="agreement-text">
+                                        Sunt de acord ca TechMinds Academy să utilizeze fotografii/videoclipuri cu copilul meu în 
+                                        materialele promoționale (site web, social media, broșuri)
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-submit">
+                                <button type="submit" class="btn btn-primary btn-large submit-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    <span>Trimite Preînregistrarea</span>
+                                </button>
+                                
+                                <div class="submit-note">
+                                    <i class="fas fa-info-circle"></i>
+                                    Te vom contacta în maximum 24 de ore pentru confirmarea preînregistrării
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Info Card -->
+                    <div class="info-card">
+                        <div class="info-header">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>De ce să alegi TechMinds Afterschool?</h3>
+                        </div>
+                        
+                        <div class="info-features">
+                            <div class="info-feature">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Program flexibil</h4>
+                                    <p>14:00 - 18:00, Luni - Vineri</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-feature">
+                                <i class="fas fa-users"></i>
+                                <div>
+                                    <h4>Grupe mici</h4>
+                                    <p>Maximum 8 copii per grupă</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-feature">
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <h4>Instructori certificați</h4>
+                                    <p>Experiență în educația copiilor</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-feature">
+                                <i class="fas fa-laptop"></i>
+                                <div>
+                                    <h4>Echipamente moderne</h4>
+                                    <p>Tehnologie de ultimă generație</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-info">
+                            <h4>Ai întrebări?</h4>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+40 758 707 448</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>afterschool@techminds-academy.ro</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Str. Știrbei Vodă, Nr. 26-28, București</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section company-info">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo-techminds-sigla.png" alt="TechMinds Academy Logo">
+                    </div>
+                    <p>Dezvoltăm competențele digitale ale generației de mâine prin cursuri interactive de programare și robotică.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61572403241620" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/official.techminds.academy" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/official-techminds-academy/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Navigare Rapidă</h3>
+                    <ul>
+                        <li><a href="index.html">Acasă</a></li>
+                        <li><a href="#program">Program</a></li>
+                        <li><a href="#beneficii">Beneficii</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section contact-info">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Str. Știrbei Vodă, Nr. 26-28, București</span></li>
+                        <li><i class="fas fa-phone"></i> <span>+40 758 707 448</span></li>
+                        <li><i class="fas fa-envelope"></i> <span>afterschool@techminds-academy.ro</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-legal-links">
+                        <a href="politica-confidentialitate.html">Politică de Confidențialitate</a>
+                        <span class="separator">|</span>
+                        <a href="gdpr.html">GDPR</a>
+                        <span class="separator">|</span>
+                        <a href="termeni-conditii.html">Termeni și Condiții</a>
+                    </div>
+                    
+                    <div class="footer-copyright">
+                        <p>&copy; 2025 TechMinds Academy. Toate drepturile rezervate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p>Se trimite preînregistrarea...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/form-validation.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
