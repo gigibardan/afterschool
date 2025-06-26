@@ -451,83 +451,58 @@ class FormValidator {
     }
     
     // Handle form submission
-  async handleSubmit() {
-    if (this.isSubmitting) return;
-    
-    // Validate form
-    if (!this.validateForm()) {
-        this.showMessage('Vă rugăm să corectați erorile de mai jos și să încercați din nou.', 'error');
+    async handleSubmit() {
+        if (this.isSubmitting) return;
         
-        // Scroll to first error
-        const firstError = this.form.querySelector('.error');
-        if (firstError) {
-            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            firstError.focus();
+        // Validate form
+        if (!this.validateForm()) {
+            this.showMessage('Vă rugăm să corectați erorile de mai jos și să încercați din nou.', 'error');
+            
+            // Scroll to first error
+            const firstError = this.form.querySelector('.error');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstError.focus();
+            }
+            
+            return;
         }
         
-        return;
+        // Collect data
+        const formData = this.collectFormData();
+        
+        // Show loading
+        this.showLoading();
+        
+        try {
+            // Submit to server
+            const response = await fetch('backend/submit.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                this.handleSuccess(result);
+            } else {
+                this.handleError(result);
+            }
+            
+        } catch (error) {
+            console.error('Form submission error:', error);
+            this.handleError({
+                message: 'A apărut o eroare la trimiterea formularului. Vă rugăm să încercați din nou.',
+                error: error.message
+            });
+        } finally {
+            this.hideLoading();
+        }
     }
-    
-    // Collect data
-    const formData = this.collectFormData();
-    
-    // Show loading
-    this.showLoading();
-    
-    try {
-        // Submit to server
-        const response = await fetch('backend/submit.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: JSON.stringify(formData)
-        });
-        
-        // Check if response is OK
-        if (!response.ok) {
-            throw new Error(`Server error: ${response.status} ${response.statusText}`);
-        }
-        
-        // Try to parse JSON
-        const contentType = response.headers.get('content-type');
-        if (!contentType || !contentType.includes('application/json')) {
-            throw new Error('Server did not return JSON response');
-        }
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            this.handleSuccess(result);
-        } else {
-            this.handleError(result);
-        }
-        
-    } catch (error) {
-        console.error('Form submission error:', error);
-        
-        // Handle different types of errors
-        let errorMessage = 'A apărut o eroare la trimiterea formularului.';
-        
-        if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            errorMessage = 'Nu se poate conecta la server. Verificați conexiunea la internet.';
-        } else if (error.message.includes('404')) {
-            errorMessage = 'Serviciul nu este disponibil momentan. Încercați din nou mai târziu.';
-        } else if (error.message.includes('500')) {
-            errorMessage = 'Eroare de server. Vă rugăm să ne contactați direct.';
-        } else if (error.message.includes('JSON')) {
-            errorMessage = 'Răspuns invalid de la server. Vă rugăm să încercați din nou.';
-        }
-        
-        this.handleError({
-            message: errorMessage,
-            error: error.message
-        });
-    } finally {
-        this.hideLoading();
-    }
-}
     
     // Handle successful submission
     handleSuccess(result) {
